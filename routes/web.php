@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\website\HomeController;
+use App\Http\Controllers\admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,7 @@ use App\Http\Controllers\website\HomeController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/website-doctor', [HomeController::class, 'doctorCategory'])->name('doctor.category');
 Route::get('/doctor-details', [HomeController::class, 'doctorDetails'])->name('doctor.details');
+
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
