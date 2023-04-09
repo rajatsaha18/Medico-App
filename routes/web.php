@@ -15,3 +15,5 @@ use App\Http\Controllers\website\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/website-doctor', [HomeController::class, 'doctorCategory'])->name('doctor.category');
+Route::get('/doctor-details', [HomeController::class, 'doctorDetails'])->name('doctor.details');
